@@ -24,6 +24,7 @@ class Article(models.Model):
 
 
 class Comment(models.Model):
+    pub_date = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User)
     article = models.ManyToManyField(Article, related_name='comments')
     content = models.TextField()
