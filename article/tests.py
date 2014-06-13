@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import Client, TestCase
 from article import models
 
 class CategoryTest(TestCase):
@@ -17,3 +17,14 @@ class CategoryTest(TestCase):
 
         self.assertEqual(unicode(category), 'Cat 2')
 
+
+class HomeViewTest(TestCase):
+
+    def setUp(self):
+        self.client = Client()
+
+    def test_home_view_returns_response(self):
+
+        response = self.client.get('/')
+
+        self.assertIn('<h1>HackerScoops</h1>', response.content)
