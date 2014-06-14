@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from article import models
 
@@ -21,6 +22,7 @@ class CategoryTest(TestCase):
 class HomeViewTest(TestCase):
 
     def setUp(self):
+        self.user = User.objects.create(username='jetbird')
         self.client = Client()
 
     def test_home_view_returns_response(self):
@@ -28,3 +30,17 @@ class HomeViewTest(TestCase):
         response = self.client.get('/')
 
         self.assertIn('<h1>HackerScoops</h1>', response.content)
+
+    def test_view_context_contains_last_ten_articles(self):
+        for ii in range(15):
+            models.Article.objects.create(
+                title='Art %s' % (ii,),
+                author=self.user,
+                body=''
+            )
+
+        response = self.client.get('/')
+
+        self.assertEqual(len(response.context['articles']), 10)
+        self.assertEqual(response.context['articles'][0].title, 'Art 0')
+        self.assertEqual(response.context['articles'][9].title, 'Art 9')

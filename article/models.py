@@ -17,7 +17,8 @@ class Article(models.Model):
     title = models.TextField()
     author = models.ForeignKey(User)
     body = models.TextField()
-    categories = models.ManyToManyField(Category, related_name='articles')
+    categories = models.ManyToManyField(
+        Category, related_name='articles', null=True)
 
     def __unicode__(self):
         return '%s by %s' %(self.title, self.author)
