@@ -3,7 +3,7 @@
 
         {% for article in articles %}
         <li>
-        {{article.title}} in {{article.categories.all|slice:":1"}}, {{article.pub_date}}
+        {{article.title}} in {{article.categories.all.0.name}}, {{article.pub_date}}
         <br>
             {{article.body|truncatechars:1300}}
         <br>
