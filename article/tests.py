@@ -44,3 +44,11 @@ class HomeViewTest(TestCase):
         self.assertEqual(len(response.context['articles']), 10)
         self.assertEqual(response.context['articles'][0].title, 'Art 0')
         self.assertEqual(response.context['articles'][9].title, 'Art 9')
+
+
+class  ArticleViewTest(TestCase):
+
+    def test_view_article_displays_the_article(self):
+        response = self.client.get('/article/article-name')
+
+        self.assertEqual(response.context['article'].title, 'My Title')

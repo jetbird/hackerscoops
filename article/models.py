@@ -14,6 +14,7 @@ class Category(models.Model):
 
 class Article(models.Model):
     pub_date = models.DateTimeField(default=timezone.now)
+    slug = models.SlugField(max_length=130)
     title = models.TextField()
     author = models.ForeignKey(User)
     body = models.TextField()
