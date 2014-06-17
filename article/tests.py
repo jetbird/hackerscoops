@@ -38,7 +38,7 @@ class HomeViewTest(TestCaseWithUser):
 
         response = self.client.get('/')
 
-        self.assertIn('<h1>HackerScoops</h1>', response.content)
+        self.assertIn('', response.content)
 
     def test_view_context_contains_last_ten_articles(self):
         for ii in range(15):
