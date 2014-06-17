@@ -2,6 +2,19 @@ from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from article import models
 
+
+class TestCaseWithUser(TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        cls.user = User.objects.create(username='jetbird')
+        cls.client = Client()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.user.delete()
+
+
 class CategoryTest(TestCase):
 
     def test_model_can_be_created(self):
@@ -19,11 +32,7 @@ class CategoryTest(TestCase):
         self.assertEqual(unicode(category), 'Cat 2')
 
 
-class HomeViewTest(TestCase):
-
-    def setUp(self):
-        self.user = User.objects.create(username='jetbird')
-        self.client = Client()
+class HomeViewTest(TestCaseWithUser):
 
     def test_home_view_returns_response(self):
 
@@ -46,9 +55,13 @@ class HomeViewTest(TestCase):
         self.assertEqual(response.context['articles'][9].title, 'Art 9')
 
 
-class  ArticleViewTest(TestCase):
+class  ArticleViewTest(TestCaseWithUser):
 
     def test_view_article_displays_the_article(self):
+        models.Article.objects.create(
+            title='My Title', author=self.user, body='', slug='article-name'
+        )
+
         response = self.client.get('/article/article-name')
 
         self.assertEqual(response.context['article'].title, 'My Title')
