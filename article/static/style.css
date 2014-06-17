@@ -1,0 +1,15 @@
+ul {
+     list-style-type:none;
+    
+}
+
+#navbar li {
+    display:inline;
+}
+
+#navbar {
+
+    width:60%;
+    border:#aeaeae 1px solid;
+    border-radius:5px 5px 0 0;
+}
