@@ -3,7 +3,7 @@ from article.models import Article
 
 
 def home(request):
-    return render(request, 'home.html', {'articles':Article.objects.all()[:10][::-1]})
+    return render(request, 'home.html', {'articles':Article.objects.all()[::-1][:10]})
 
 
 def article(request, slug):
