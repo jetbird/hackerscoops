@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>HackerScoops</h1>
 {% if articles %}
-    <ul>
+  <div id="home_articles">
+      <ul>
 
         {% for article in articles %}
         <li>
@@ -14,9 +14,8 @@
         <a href="article/{{article.slug}}">Read More</a>
         </li>
         {% endfor %}
-   
-    </ul>
-
+     </ul>
+  </div> 
 {% else %}
 
 <p>No articles available</p>

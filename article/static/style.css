@@ -1,9 +1,9 @@
 #navbar {
     width:1130px;
     height:130px;
-    margin:auto auto;
-}
+    margin: auto auto;
 
+}
 #navbar ul {
     list-style:none;
     border:solid 1px #21C5D1;
@@ -23,8 +23,20 @@
 #navbar a:link, a:visited {
     text-decoration:none;
     text-transform:uppercase;
+    #color:2B1596;
+    color:#7A991A;
 }
 
 #navbar  a:hover, a:active {
-    color:#7A991A;
+    #color:#7A991A;
+    color:#2B1596;
+}
+
+
+#home_articles ul {
+    border:solid 1px;
+    border-radius:31px;
+    width:740px;
+    margin:10 102.500 ;
+    list-style:none;
 }
