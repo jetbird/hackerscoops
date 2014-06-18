@@ -1,15 +1,18 @@
 #navbar {
-    width:1030px;
-    margin:0px auto;
+    width:1130px;
+    height:130px;
+    margin:auto auto;
 }
 
 #navbar ul {
     list-style:none;
-    border:solid 1px #aeaeae;
+    border:solid 1px #21C5D1;
     border-width:13px;
-    border-radius:5px 5px 0 0;
+    border-radius:13px;
     margin: 0 auto;
     text-align:center;
+    background-color:white;
+    font-size:20px;
 }
 
 
@@ -17,3 +20,11 @@
     display:inline;
 }
 
+#navbar a:link, a:visited {
+    text-decoration:none;
+    text-transform:uppercase;
+}
+
+#navbar  a:hover, a:active {
+    color:#7A991A;
+}
