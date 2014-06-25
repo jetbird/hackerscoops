@@ -41,7 +41,7 @@ class HomeViewTest(TestCaseWithUser):
         self.assertIn('<h1>HackerScoops</h1>', response.content)
 
     def test_view_context_contains_last_ten_articles(self):
-        for ii in range(15):
+        for ii in range(10):
             models.Article.objects.create(
                 title='Art %s' % (ii,),
                 author=self.user,
@@ -51,8 +51,8 @@ class HomeViewTest(TestCaseWithUser):
         response = self.client.get('/')
 
         self.assertEqual(len(response.context['articles']), 10)
-        self.assertEqual(response.context['articles'][0].title, 'Art 0')
-        self.assertEqual(response.context['articles'][9].title, 'Art 9')
+        self.assertEqual(response.context['articles'][0].title, 'Art 9')
+        self.assertEqual(response.context['articles'][9].title, 'Art 0')
 
 
 class  ArticleViewTest(TestCaseWithUser):
@@ -65,3 +65,24 @@ class  ArticleViewTest(TestCaseWithUser):
         response = self.client.get('/article/article-name')
 
         self.assertEqual(response.context['article'].title, 'My Title')
+
+
+class CategoryViewTest(TestCaseWithUser):
+
+    def test_category_displays_the_articles(self):
+
+        my_article = models.Article(title='Title', author=self.user, body='',
+             slug='article-name')
+        my_article.save()
+        test_category = models.Category(name='TestCategory')
+        test_category.save()
+        my_article.categories.add(test_category)
+
+
+        response = self.client.get('/category/TestCategory')
+
+        self.assertEqual(response.context['my_category'][0].title,
+            models.Article.objects.filter
+            (categories__name__startswith='TestCategory')[0].title)
+
+

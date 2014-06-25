@@ -2,6 +2,10 @@
 
 {% block content %}
 {% if article %}
-{{article.body}}
+<div id="article_display">
+    <ul>
+     {{article.body}}
+    </ul>
+</div>
 {% endif %}
 {% endblock content %}

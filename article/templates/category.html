@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for article in my_category %}
+
+<div id='category'>
+<ul>
+    <li>{{article.title}}</li>
+    <li>{{article.body | truncatechars:1100}}</li>
+    <br>
+    <a href="{% url 'article'  article.slug  %}">Read More</a>
+</ul>
+</div>
+{% endfor %}
+
+{% endblock content %}

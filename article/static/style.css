@@ -34,9 +34,21 @@
 
 
 #home_articles ul {
-    border:solid 1px;
+    border:solid 1px #eaeaea ;
     border-radius:31px;
     width:740px;
     margin:10 102.500 ;
+    list-style:none;
+}
+
+#article_display {
+    border:solid 1px #eaeaea;
+    border-radius:31px;
+    width:740px;
+    margin:10 102.500;
+    list-style:none;
+}
+
+#category ul {
     list-style:none;
 }
