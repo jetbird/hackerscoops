@@ -49,6 +49,13 @@
     list-style:none;
 }
 
-#category ul {
+#category ul  {
     list-style:none;
+}
+
+#category  {
+    border:solid 1px #eaeaea;
+    border-radius:31px;
+    width:740px;
+    margin:10 102.500;
 }
