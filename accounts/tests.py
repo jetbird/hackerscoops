@@ -1,6 +1,18 @@
 from django.test import TestCase, Client
+from accounts.forms import UserForm, UserProfileForm
 
 # Create your tests here.
+
+
+class TestForms(TestCase):
+    def test_userform_data_is_valid(self):
+        form = UserForm(data={'username':'j13',
+            'email':'j13@gmail.com', 'password':'o13$#'})
+        self.assertEqual(form.is_valid(), True)
+
+    def test_userprofileform_is_valid(self):
+        form = UserProfileForm(data={'website':'myweb'})
+        self.assertEqual(form.is_valid(), True)
 
 
 class RegisterViewTest(TestCase):
@@ -15,5 +27,8 @@ class RegisterViewTest(TestCase):
 
     def test_if_user_can_register(self):
         response = self.client.post('/accounts/register/',
-                {'username':'o13', 'email':'o13@gmail.com', 'password':'o13'})
+                {'username':'o13', 'email':'o13@gmail.com', 'password':'o13$'})
         self.assertEqual(response.status_code, 200)
+
+
+
