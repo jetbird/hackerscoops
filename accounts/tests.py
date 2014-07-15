@@ -11,7 +11,7 @@ class TestForms(TestCase):
         self.assertEqual(form.is_valid(), True)
 
     def test_userprofileform_is_valid(self):
-        form = UserProfileForm(data={'website':'myweb'})
+        form = UserProfileForm(data={'website':'myweb13.com'})
         self.assertEqual(form.is_valid(), True)
 
 
@@ -31,4 +31,13 @@ class RegisterViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
 
+class LoginViewTesteCase(TestCase):
+    def test_if_login_view_returns_200(self):
+        response = self.client.get('/accounts/login/')
+        self.assertEqual(response.status_code,200)
+
+    def if_user_can_login(self):
+        response = self.client.post('/accounts/login',
+                {'username':'oltjano','password':'test132244'})
+        self.assertEqual(response.status_code,200)
 

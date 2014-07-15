@@ -1,5 +1,7 @@
 from django.shortcuts import render_to_response, RequestContext
 from accounts.forms import UserForm, UserProfileForm
+from django.contrib.auth import authenticate, login
+from django.http import  HttpResponse
 
 # Create your views here.
 
@@ -30,3 +32,24 @@ def register(request):
     return render_to_response('register.html',
             {'user_form':user_form,'profile_form':profile_form,
                 'registered':registered}, context )
+
+
+def user_login(request):
+    context = RequestContext(request)
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        #authenticate the user
+        user = authenticate(username=username, password=password)
+        if user:
+            if user.is_active:
+                #login the user
+                login(request, user)
+                return HttpResponse("OK!")
+            else:
+                return HttpResponse("The Account Has Been Disabled")
+        else:
+            return HttpResponse("Invalid Credentials")
+    else:
+        return render_to_response('login.html', {}, context)
