@@ -9,7 +9,7 @@
   <div id="home_articles">
       <ul>
 
-        {% for article in articles reversed %}
+        {% for article in articles  %}
         <li>
         {{article.title}} in {{article.categories.all.0.name}}, {{article.pub_date}}
         <br>

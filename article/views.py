@@ -3,7 +3,7 @@ from article.models import Article
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 def home(request):
-    article_list = Article.objects.all()
+    article_list = Article.objects.all()[::-1]
     paginator = Paginator(article_list,10)
 
     page = request.GET.get('page')
