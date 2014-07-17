@@ -9,7 +9,7 @@
   <div id="home_articles">
       <ul>
 
-        {% for article in articles %}
+        {% for article in articles reversed %}
         <li>
         {{article.title}} in {{article.categories.all.0.name}}, {{article.pub_date}}
         <br>
@@ -18,8 +18,29 @@
         <a href="article/{{article.slug}}">Read More</a>
         </li>
         {% endfor %}
-     </ul>
-  </div> 
+    </ul>
+  
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if articles.has_previous %}
+            <a href="?page={{articles.previous_page_number}}">previous</a>
+        {% endif %}
+
+        <span class="currrent">
+            Page {{articles.number}} of {{articles.paginator.num_pages}}
+        </span>
+
+        {% if articles.has_next %}
+            <a href="?page={{articles.next_page_number}}">next</a>
+        {% endif %}
+
+    </span>
+</div>
+
+
+
 {% else %}
 
 <p>No articles available</p>
