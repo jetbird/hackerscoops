@@ -5,7 +5,7 @@
 <div id='category'>
 <ul>
 
-{% for article in my_category %}
+{% for article in articles %}
 
     <li>{{article.title}}</li>
     <li>{{article.body | truncatechars:1100}}</li>
@@ -13,6 +13,23 @@
     <a href="{% url 'article'  article.slug  %}">Read More</a>
 {% endfor %}
 </ul>
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if articles.has_previous %}
+            <a href="?page={{articles.previous_page_number}}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{articles.number}} of {{articles.paginator.num_pages}}
+        </span>
+
+         {% if articles.has_next %}
+            <a href="?page={{articles.next_page_number}}">next</a>
+        {% endif %}
+    </span>
+
 </div>
 
 

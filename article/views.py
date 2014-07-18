@@ -23,8 +23,19 @@ def article(request, slug):
 
 
 def category(request, my_category):
+    article_list = Article.objects.filter(categories__name__startswith=my_category)[::-1]
+    paginator = Paginator(article_list, 10)
+
+    page = request.GET.get('page')
+    try:
+        articles = paginator.page(page)
+    except PageNotAnInteger:
+        articles = paginator.page(1)
+    except EmptyPage:
+        articles = paginator.page(paginator.num_pages)
+
     return render(request, 'category.html',
-            {'my_category':Article.objects.filter(categories__name__startswith=my_category)[::-1]})
+            {'articles':articles})
 
 
 def login_view(request):
