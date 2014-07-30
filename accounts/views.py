@@ -1,11 +1,14 @@
-from django.shortcuts import render_to_response, RequestContext
+from django.shortcuts import render_to_response, RequestContext, HttpResponseRedirect
 from accounts.forms import UserForm, UserProfileForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import  HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import  reverse
 
 # Create your views here.
 
 def register(request):
+
     context = RequestContext(request)
     registered = False
 
@@ -46,10 +49,18 @@ def user_login(request):
             if user.is_active:
                 #login the user
                 login(request, user)
-                return HttpResponse("OK!")
+                return HttpResponseRedirect(reverse('home'))
             else:
                 return HttpResponse("The Account Has Been Disabled")
         else:
-            return HttpResponse("Invalid Credentials")
+            return HttpResponse("Invalid Credentials. Go back and try again.")
     else:
         return render_to_response('login.html', {}, context)
+
+
+@login_required
+def user_logout(request):
+    logout(request)
+
+    url = reverse('home')
+    return HttpResponseRedirect(url)

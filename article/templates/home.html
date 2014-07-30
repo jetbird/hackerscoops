@@ -1,10 +1,8 @@
 <html>
-    <h1>HackerScoops</h1>
 {% extends 'base.html' %}
 
 {% block content %}
-<a href="{% url 'register' %}">Register Here</a>
-<a href="{% url 'user_login' %}">Login Here</a>
+
 {% if articles %}
   <div id="home_articles">
       <ul>

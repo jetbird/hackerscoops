@@ -4,8 +4,28 @@
 {% if article %}
 <div id="article_display">
     <ul>
-     {{article.body}}
+        {{article.body}}
+        {% for comment in article.comments.all  %}
+        </br>
+        {{comment.author}} says {{comment.content}}
+        </br>
+        {% endfor %}
     </ul>
+</div>
+
+{% if comment %}
+
+
+<form id="comment_form" method="post">
+
+    {% csrf_token %}
+            
+    {{comment.as_p}}
+
+    <input type="submit" name="submit" value="Comment">
+</form>
+
+{% endif %}
 </div>
 {% endif %}
 {% endblock content %}

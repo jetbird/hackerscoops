@@ -1,53 +1,61 @@
-#navbar {
-    width:1130px;
-    height:130px;
-    margin: auto auto;
-
-}
 #navbar ul {
+
+    width:75%;
+    float:left;
+    padding:0;
+    margin-left:0;
+    margin-top:0;
+    border-bottom:1px solid ;
+    font:bold 13px Verdana, sans-serif;
+    background-color:#C5E3E1;
+}
+
+#navbar ul li {
     list-style:none;
-    border:solid 1px #21C5D1;
-    border-width:13px;
-    border-radius:13px;
-    margin: 0 auto;
-    text-align:center;
-    background-color:white;
-    font-size:20px;
+    margin:0;
+    float:left;
 }
 
-
-#navbar li {
-    display:inline;
-}
-
-#navbar a:link, a:visited {
+#navbar ul li a {
+    padding:12px 0.5em;
+    margin-left:3px;
+    border:1px solid #778;
+    border-bottom:none;
+    background-color:#0AF2E7;
     text-decoration:none;
-    text-transform:uppercase;
-    #color:2B1596;
-    color:#7A991A;
+    text-align:center;
+    display:block;
+    width:7em;
 }
 
-#navbar  a:hover, a:active {
-    #color:#7A991A;
-    color:#2B1596;
+#navbar ul li a:link {
+    color:white;
 }
 
+#links a {
+        float:right;
+}
+
+#home_articles  {
+    border:solid 1px #eaeaea ;
+    width:58%;
+    background-color:white;
+    margin-left:0;
+    margin-top:0px;
+}
 
 #home_articles ul {
-    border:solid 1px #eaeaea ;
-    border-radius:31px;
-    width:740px;
-    margin:10 102.500 ;
     list-style:none;
 }
 
 #article_display {
     border:solid 1px #eaeaea;
     border-radius:31px;
-    width:740px;
+    width:720px;
     margin:10 102.500;
-    list-style:none;
+    background-color:white;
 }
+
 
 #category ul  {
     list-style:none;
@@ -55,7 +63,7 @@
 
 #category  {
     border:solid 1px #eaeaea;
-    border-radius:31px;
-    width:740px;
-    margin:10 102.500;
+    width:720px;
+    margin:10 103;
+    background-color:white;
 }

@@ -6,12 +6,13 @@
     <title>
         {% block title %}{% endblock title %}
     </title>
+
 <style>
 </style>
 
 </head>
 
-<body>
+<body bgcolor="#C5E3E">
        <div id="navbar">
            <ul>
                <li><a href="{% url 'category' 'Iphone' %}">Iphone</a></li>
@@ -20,14 +21,21 @@
                <li><a href="{% url 'category' 'Linux' %}">Linux</a></li>
                <li><a href="{% url 'category' 'Windows' %}">Windows</a></li>
                <li><a href="{% url 'category' 'Mac' %}">Mac</a></li>
-               <li><a href="{% url 'category' 'Mobile' %}">Mobile</a></li>
                <li><a href="{% url 'category' 'Malware' %}">Malware</a></li>
-               <li><a href="{% url 'category' 'Defaces' %}">Defaces</a></li>
-               <li><a href="{% url 'category' 'DataTheft' %}">DataTheft</a></li>
+               <li><a href="{% url 'category' 'Datatheft' %}">Datatheft</a></li>
                <li><a href="{% url 'category' 'Xbox' %}">Xbox</a></li>
            </ul>
         
        </div>
+       
+       <div id="links">
+           {% if request.user.is_authenticated %}
+           <a href="/logout/"> Logout</a> 
+           {% else %}
+           <a href="{% url 'register' %}">Register Here</a>
+           <a href="{% url 'user_login' %}">Login</a>
+           {% endif %}
+        </div>
     {% block content %}    
     {% endblock content %}
 

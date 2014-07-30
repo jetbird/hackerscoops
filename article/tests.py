@@ -81,8 +81,19 @@ class CategoryViewTest(TestCaseWithUser):
 
         response = self.client.get('/category/TestCategory')
 
-        self.assertEqual(response.context['my_category'][0].title,
+        self.assertEqual(response.context['article_list'][0].title,
             models.Article.objects.filter
             (categories__name__startswith='TestCategory')[0].title)
 
+
+class CommentTest(TestCaseWithUser):
+
+    def test_if_user_can_comment(self):
+
+        test_user=User.objects.create(username='j13',password='j13')
+        response=self.client.post('/accounts/login/',{'username':'j13','password':'j13'})
+        second_response = self.client.post('/article/holy_python/',
+            {'author':test_user,'content':'test'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(second_response.status_code,200)
 
