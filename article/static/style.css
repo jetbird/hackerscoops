@@ -1,9 +1,8 @@
 #navbar ul {
 
-    width:75%;
+    width:100%;
     float:left;
     padding:0;
-    margin-left:0;
     margin-top:0;
     border-bottom:1px solid ;
     font:bold 13px Verdana, sans-serif;
@@ -18,7 +17,7 @@
 
 #navbar ul li a {
     padding:12px 0.5em;
-    margin-left:3px;
+    margin-left:0 px;
     border:1px solid #778;
     border-bottom:none;
     background-color:#0AF2E7;
@@ -37,6 +36,8 @@
 }
 
 #home_articles  {
+    padding:0;
+    margin-top:0;
     border:solid 1px #eaeaea ;
     width:58%;
     background-color:white;
