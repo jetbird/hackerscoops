@@ -22,6 +22,7 @@
                <li><a href="{% url 'category' 'Windows' %}">Windows</a></li>
                <li><a href="{% url 'category' 'Mac' %}">Mac</a></li>
                <li><a href="{% url 'category' 'General' %}">General</a></li>
+               <li><a href="{% url 'about' 'Us' %}">About Us</a></li>
            </ul>
         
        </div>
@@ -33,7 +34,17 @@
            <a href="{% url 'register' %}">Register Here</a>
            <a href="{% url 'user_login' %}">Login</a>
            {% endif %}
-        </div>
+       </div>
+
+
+       <div id="latest_articles">
+           <ul>
+               {% for item in recent_articles %}
+               <li>{{ item.title }}</li>
+               {% endfor %}
+           </ul>
+       </div>
+
     {% block content %}    
     {% endblock content %}
 

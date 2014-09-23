@@ -5,6 +5,8 @@
 <div id="article_display">
     <ul>
         {{article.body}}
+        <br>
+        Article by {{article.author}}
         {% for comment in article.comments.all  %}
         </br>
         {{comment.author}} says {{comment.content}}

@@ -15,4 +15,5 @@ urlpatterns = patterns('',
     url(r'^testing/stuff/$', listing, name='listing_articles'),
     url(r'^logout/$', user_logout, name='logout'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^about/([\w-]+)', views.about, name='about')
 )

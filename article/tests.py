@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from article import models
+from django.contrib.auth import authenticate, login
 
 
 class TestCaseWithUser(TestCase):
@@ -90,10 +91,24 @@ class CommentTest(TestCaseWithUser):
 
     def test_if_user_can_comment(self):
 
+
         test_user=User.objects.create(username='j13',password='j13')
-        response=self.client.post('/accounts/login/',{'username':'j13','password':'j13'})
-        second_response = self.client.post('/article/holy_python/',
-            {'author':test_user,'content':'test'})
-        self.assertEqual(response.status_code, 200)
+        user=authenticate(username='j13',password='j13')
+        response = self.client.post('/accounts/login/',{'username':'j13',
+        'password':'j13'}
+                )
+        login(user)
+
+        second_response = self.client.post('/article/holy_bitcoin',
+                {'author':test_user,'content':'test'})
+        self.assertEqual(response.status_code,200)
         self.assertEqual(second_response.status_code,200)
+
+
+
+class AboutTest(TestCaseWithUser):
+
+    def test_if_about_returns_200(self):
+        response = self.client.get('/about/Us')
+        self.assertEqual(response.status_code,200)
 

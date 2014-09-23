@@ -37,7 +37,7 @@ class LoginViewTesteCase(TestCase):
         self.assertEqual(response.status_code,200)
 
     def test_if_user_can_login(self):
-        response = self.client.post('/accounts/login',
+        response = self.client.post('/accounts/login/',
                 {'username':'oltjano','password':'test132244'})
         self.assertEqual(response.status_code,200)
 

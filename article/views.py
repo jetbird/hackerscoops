@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response, HttpResponse
+from django.shortcuts import render, HttpResponse
 from article.models import Article
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from article.forms import CommentForm
@@ -16,7 +16,7 @@ def home(request):
     except EmptyPage:
         articles = paginator.page(paginator.num_pages)
 
-    return render_to_response('home.html',
+    return render(request,'home.html',
             {'articles':articles, 'request':request})
 
 
@@ -53,3 +53,6 @@ def category(request, my_category):
     return render(request, 'category.html',
         {'articles':articles,'request':request,'article_list':article_list})
 
+
+def about(request,ab_var):
+    return render(request, 'about.html')
