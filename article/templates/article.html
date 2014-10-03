@@ -4,7 +4,7 @@
 {% if article %}
 <div id="article_display">
     <ul>
-        {{article.body}}
+        {{ article.body_html|safe }}
         <br>
         Article by {{article.author}}
         {% for comment in article.comments.all  %}

@@ -40,7 +40,7 @@
        <div id="latest_articles">
            <ul>
                {% for item in recent_articles %}
-               <li>{{ item.title }}</li>
+               <li><a href="{% url 'article' item.slug  %}">{{ item.title }}</a></li>
                {% endfor %}
            </ul>
        </div>

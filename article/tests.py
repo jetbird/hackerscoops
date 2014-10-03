@@ -93,22 +93,17 @@ class CommentTest(TestCaseWithUser):
 
 
         test_user=User.objects.create(username='j13',password='j13')
-        user=authenticate(username='j13',password='j13')
         response = self.client.post('/accounts/login/',{'username':'j13',
         'password':'j13'}
                 )
-        login(user)
-
         second_response = self.client.post('/article/holy_bitcoin',
                 {'author':test_user,'content':'test'})
         self.assertEqual(response.status_code,200)
         self.assertEqual(second_response.status_code,200)
 
 
-
-class AboutTest(TestCaseWithUser):
+class AboutViewTest(TestCaseWithUser):
 
     def test_if_about_returns_200(self):
         response = self.client.get('/about/Us')
         self.assertEqual(response.status_code,200)
-

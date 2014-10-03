@@ -50,13 +50,18 @@
 }
 
 #article_display {
+    padding:0;
+    margin-top:0;
     border:solid 1px #eaeaea;
-    border-radius:31px;
-    width:720px;
-    margin:10 102.500;
+    width:55.5%;
     background-color:white;
+    margin-left:0;
+    margin-top:0px;
 }
 
+#article_display ul {
+    list-style:none;
+}
 
 #category ul  {
     list-style:none;
