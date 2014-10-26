@@ -12,9 +12,8 @@
         {% for article in articles  %}
         <li>
         {{article.title}} in {{article.categories.all.0.name}}, {{article.pub_date}}
-        {% for image in article.photo.all %}
-        {% endfor %}
         <br>
+        <img src="{{article.articlethumbnail.thumbnail.url}}"</img>
             {{article.body_html|safe|truncatechars:1300}}
         <br>
         <a href="article/{{article.slug}}">Read More</a>

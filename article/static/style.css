@@ -63,13 +63,23 @@
     list-style:none;
 }
 
+#latest_articles ul {
+    list-style:none;
+}
+
+#latest_comments ul  {
+    list-style:none;
+}
+
 #category ul  {
     list-style:none;
 }
 
 #category  {
+    padding:0;
     border:solid 1px #eaeaea;
-    width:720px;
-    margin:10 103;
+    width:55.5%;
+    margin-left:0;
+    margin-top:0;
     background-color:white;
 }

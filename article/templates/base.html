@@ -45,6 +45,16 @@
            </ul>
        </div>
 
+       <div id="latest_comments">
+           <ul>
+               {% for comment in recent_comments %}
+               {{comment.author}}
+               <li>{{comment.content}}</li>
+
+               {% endfor %}
+           </ul>
+
+       </div>
     {% block content %}    
     {% endblock content %}
 
