@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from article import models
 from django.contrib.auth import authenticate, login
+from article.views import normalize_query
 
 
 class TestCaseWithUser(TestCase):
@@ -107,3 +108,10 @@ class AboutViewTest(TestCaseWithUser):
     def test_if_about_returns_200(self):
         response = self.client.get('/about/Us')
         self.assertEqual(response.status_code,200)
+
+
+class QueryStringTest(TestCaseWithUser):
+
+    def test_query_can_normalized(self):
+        self.assertEqual(normalize_query('jetbird loves python'),
+                ['jetbird', 'loves', 'python'])

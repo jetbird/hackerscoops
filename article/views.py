@@ -1,7 +1,16 @@
+import re
 from django.shortcuts import render, HttpResponse
 from article.models import Article
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from article.forms import CommentForm
+
+
+def normalize_query(
+        query_string,
+        findterms=re.compile(r'"([^"]+)"|(\S+)').findall,
+        normspace=re.compile(r'\s{2,}').sub):
+
+        return [normspace(' ', (t[0]or t[1])) for t in findterms(query_string)]
 
 
 def home(request):
