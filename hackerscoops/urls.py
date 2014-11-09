@@ -14,7 +14,8 @@ urlpatterns = patterns('',
     url(r'^accounts/login/$', user_login, name='user_login'),
     url(r'^logout/$', user_logout, name='logout'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^about/([\w-]+)', views.about, name='about')
+    url(r'^about/([\w-]+)', views.about, name='about'),
+    url(r'^', views.search, name='search')
 )
 
 if settings.DEBUG:

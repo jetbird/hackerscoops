@@ -22,8 +22,14 @@
                <li><a href="{% url 'category' 'Windows' %}">Windows</a></li>
                <li><a href="{% url 'category' 'Mac' %}">Mac</a></li>
                <li><a href="{% url 'category' 'General' %}">General</a></li>
-               <li><a href="{% url 'about' 'Us' %}">About Us</a></li>
+               <li><a href="{% url 'about' 'Us' %}">About Us</a></li>               
            </ul>
+
+               <form method="get" action="/search">
+                   <label for="query">Search</label>
+                   <input type="text" name="query" id="query">
+                   <input type="submit" value="Submit">
+               </form>
         
        </div>
        

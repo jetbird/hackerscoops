@@ -33,7 +33,14 @@ def get_query(query_string, search_fields):
 
 
 def search(request):
-    pass
+    querystring = ''
+    foundentries = None
+    if ('query' in request.GET) and request.GET['query'].strip():
+        querystring = request.GET['query'].strip()
+        entryquery = get_query(querystring, ['title', 'body'])
+        foundentries = Article.objects.filter(entryquery)
+
+    return render(request, 'search.html', {'results':foundentries})
 
 
 def home(request):

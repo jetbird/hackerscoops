@@ -1,0 +1,23 @@
+<html>
+
+
+{% block content %}
+
+
+
+{% if results %}
+    {% for result in results %}
+        {{result.title}}
+    {% endfor %}
+
+{% else %}
+
+No articles found
+
+{% endif %}
+
+
+{% endblock content %}
+
+
+</html>
