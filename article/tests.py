@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from article import models
 from django.contrib.auth import authenticate, login
-from article.views import normalize_query
+from article.views import normalize_query, get_query
 
 
 class TestCaseWithUser(TestCase):
@@ -115,3 +115,12 @@ class QueryStringTest(TestCaseWithUser):
     def test_query_can_normalized(self):
         self.assertEqual(normalize_query('jetbird loves python'),
                 ['jetbird', 'loves', 'python'])
+
+    def test_get_query_works(self):
+
+        my_article = models.Article.objects.create(
+                title='Title', author=self.user, body='', slug='article-name'
+                )
+        query = get_query('Title', ['title', 'body'])
+        searchresult = models.Article.objects.filter(query)
+        self.assertEqual(searchresult[0], my_article)
