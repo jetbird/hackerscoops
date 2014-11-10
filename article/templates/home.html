@@ -13,7 +13,9 @@
         <li>
         {{article.title}} in {{article.categories.all.0.name}}, {{article.pub_date}}
         <br>
+        {% if article.articlethumbnail.thumbnail %}
         <img src="{{article.articlethumbnail.thumbnail.url}}"</img>
+        {% endif %}
             {{article.body_html|safe|truncatechars:1300}}
         <br>
         <a href="article/{{article.slug}}">Read More</a>

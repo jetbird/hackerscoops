@@ -77,7 +77,7 @@ class Article(models.Model):
     categories = models.ManyToManyField(
         Category, related_name='articles', null=True)
     articlethumbnail = models.OneToOneField(
-        ImageThumbnail,related_name='articlethumbnail',blank=True, null=True)
+        ImageThumbnail,related_name='articlethumbnail',blank=True)
 
     def __unicode__(self):
         return '%s by %s' %(self.title, self.author)
